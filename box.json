@@ -1,0 +1,20 @@
+{
+	"name" 		: "BugLogHQ",
+	"author" 	: "Luis Majano <lmajano@ortussolutions.com",
+	"version"	: "1.0.0",
+	"slug"		: "bugloghq",
+	"type"		: "modules",
+	"repository"		: { "type" : "git", "url" : "https://github.com/ColdBox/cbox-bugloghq" },
+	"shortDescription"	: "A module to send bug reports to BugLogHQ by Oscar Arevalo",
+	"engines"	: [
+		{ "type" : "railo", "version" : ">3.1" },
+		{ "type" : "adobe", "version" : ">9.0" },
+		{ "type" : "coldbox", "version" : ">3.5" }
+	],
+	"license"			: [ 
+		{ "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" } 
+	],
+	"devdependencies" : {
+		"testbox" : "2.0.0"		
+	}
+}
