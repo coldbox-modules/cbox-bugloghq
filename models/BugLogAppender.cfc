@@ -25,23 +25,25 @@ component extends="coldbox.system.logging.AbstractAppender"{
 		return this;
 	}
 	
-	function logMessage(required logEvent){
-		var loge = arguments.logEvent;
-		var entry = "";
+	/**
+	* Log a message
+	*/
+	function logMessage( required logEvent ){
+		var loge	= arguments.logEvent;
+		var entry 	= "";
 		
 		if ( hasCustomLayout() ){
 			entry = getCustomLayout().format( loge );
-		}
-		else{
+		} else {
 			entry = loge.getCategory() & ":" & loge.getMessage();
 		}
 		
 		// log it
 		variables.buglogHQService.notifyService(
-			message = entry,
-			exception = {},
-			extraInfo = loge.getExtraInfo(),
-			severityCode = loge.getSeverity()
+			message 		= entry,
+			exception 		= {},
+			extraInfo 		= loge.getExtraInfo(),
+			severityCode 	= loge.getSeverity()
 		);
 	}
 	
