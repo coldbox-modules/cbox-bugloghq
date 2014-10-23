@@ -43,7 +43,7 @@ component extends="coldbox.system.logging.AbstractAppender"{
 			message 		= entry,
 			exception 		= {},
 			extraInfo 		= loge.getExtraInfo(),
-			severityCode 	= loge.getSeverity()
+			severityCode 	= this.logLevels.lookup( loge.getSeverity() )
 		);
 	}
 	
