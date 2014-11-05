@@ -94,6 +94,12 @@ component {
 		logBoxConfig.root( levelMin=rootConfig.levelMin,
 						   levelMax=rootConfig.levelMax,
 						   appenders=listAppend( rootConfig.appenders, "bugloghq_appender") );
+						   
+		// Register the async appender
+		logBoxConfig.appender( name="bugloghq_asyncappender", class="#moduleMapping#.models.AsyncBugLogAppender" );
+		logBoxConfig.root( levelMin=rootConfig.levelMin,
+						   levelMax=rootConfig.levelMax,
+						   appenders=listAppend( rootConfig.appenders, "bugloghq_asyncappender") );
 
 		// Store back config
 		controller.getLogBox().configure( logBoxConfig );
