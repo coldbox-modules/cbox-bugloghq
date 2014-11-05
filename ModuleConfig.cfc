@@ -132,7 +132,7 @@ component {
 			// Write out errors to CFLog
 			"writeToCFLog" : true,
 			// Enable the BugLogHQ LogBox Appender Bridge
-			"enableLogBoxAppender" : true
+			"enableLogBoxAppender" : false
 		};
 
 		// incorporate settings
