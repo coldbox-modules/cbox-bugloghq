@@ -46,32 +46,4 @@ component output="false" extends="BugLogAppender" hint="Async BugLogHQ appender"
 		}
 	}
 	
-	/*
-	
-	<!--- Log Message --->
-	<cffunction name="logMessage" access="public" output="false" returntype="void" hint="Write an entry into the appender.">
-		<!--- ************************************************************* --->
-		<cfargument name="logEvent" type="any" required="true" hint="The logging event"/>
-		<!--- ************************************************************* --->
-		
-		<cfscript>
-			var uuid = createobject("java", "java.util.UUID").randomUUID();
-			var threadName = "#getname()#_logMessage_#replace(uuid,"-","","all")#";
-		</cfscript>
-		
-		<!--- Are we in a thread already? --->
-		<cfif getUtil().inThread()>
-			<cfset super.logMessage(arguments.logEvent)>
-		<cfelse>
-			<!--- Thread this puppy --->
-			<cfthread name="#threadName#" logEvent="#arguments.logEvent#">
-				<cfset variables.$super.logMessage(attributes.logEvent)>
-			</cfthread>
-		</cfif>
-
-	</cffunction>
-	
-	*/
-	
-	
 }
