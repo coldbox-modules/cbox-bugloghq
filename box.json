@@ -1,17 +1,25 @@
 {
-	"name" 		: "BugLogHQ",
-	"author" 	: "Luis Majano <lmajano@ortussolutions.com>",
-	"version"	: "2.0.0",
-	"slug"		: "bugloghq",
-	"type"		: "modules",
-	"repository"		: { "type" : "git", "url" : "https://github.com/ColdBox/cbox-bugloghq" },
-	"shortDescription"	: "A module to send bug reports to BugLogHQ by Oscar Arevalo",
-	"engines"	: [
-		{ "type" : "railo", "version" : ">4" },
-		{ "type" : "adobe", "version" : ">9.02" },
-	],
-	"license"			: [ 
-		{ "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" } 
-	],
-	"ignore" : [ "apidocs/*", "readme.md", "instructions.md", "changelog.md", "handlers/*" ]
+    "name":"BugLogHQ",
+    "author":"Ortus Solutions <info@ortussolutions.com>",
+    "location":"coldbox-modules/cbox-bugloghq#v2.0.0",
+    "version":"minor",
+    "slug":"bugloghq",
+    "type":"modules",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/coldbox-modules/cbox-bugloghq"
+    },
+    "shortDescription":"A module to send bug reports to BugLogHQ by Oscar Arevalo",
+    "license":[
+        {
+            "type":"Apache2",
+            "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    ],
+    "ignore":[
+        "apidocs/*",
+        "handlers/*"
+    ],
+    "postVersion":"package set location='gitUser/gitRepo#v`package version`'",
+    "postPublish":"!git push --follow-tags"
 }
