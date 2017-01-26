@@ -29,22 +29,38 @@ component extends="coldbox.system.logging.AbstractAppender"{
 	* Log a message
 	*/
 	function logMessage( required logEvent ){
-		var loge	= arguments.logEvent;
 		var entry 	= "";
 		
 		if ( hasCustomLayout() ){
-			entry = getCustomLayout().format( loge );
+			entry = getCustomLayout().format( arguments.logEvent );
 		} else {
-			entry = loge.getCategory() & ":" & loge.getMessage();
+			entry = arguments.logEvent.getCategory() & ":" & arguments.logEvent.getMessage();
 		}
-		
-		// log it
-		variables.buglogHQService.notifyService(
-			message 		= entry,
-			exception 		= {},
-			extraInfo 		= loge.getExtraInfo(),
-			severityCode 	= this.logLevels.lookup( loge.getSeverity() )
-		);
+
+		if( instance.util.inThread() ) {
+			// log it
+			variables.buglogHQService.notifyService(
+				message 		= entry,
+				exception 		= {},
+				extraInfo 		= arguments.logEvent.getExtraInfo(),
+				severityCode 	= this.logLevels.lookup( arguments.logEvent.getSeverity() )
+			);
+		} else {
+			// Thread this puppy
+			thread 	action="run" 
+					name="#threadName#" 
+					logEvent="#arguments.logEvent#" 
+					entry="#entry#"
+			{
+				// log it
+				variables.buglogHQService.notifyService(
+					message 		= attributes.entry,
+					exception 		= {},
+					extraInfo 		= attributes.logEvent.getExtraInfo(),
+					severityCode 	= this.logLevels.lookup( attributes.logEvent.getSeverity() )
+				);
+			}
+		}
 	}
 	
 }

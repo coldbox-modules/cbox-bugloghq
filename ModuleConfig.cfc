@@ -1,7 +1,7 @@
 /**
 *********************************************************************************
 * Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-* www.coldbox.org | www.luismajano.com | www.ortussolutions.com
+* www.ortussolutions.com
 ********************************************************************************
 */
 component {
@@ -11,7 +11,7 @@ component {
 	this.author 			= "Luis Majano";
 	this.webURL 			= "http://www.ortussolutions.com";
 	this.description 		= "Bug Log HQ Interaction";
-	this.version			= "2.0.0";
+	this.version			= "2.1.0";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup 	= true;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
@@ -28,9 +28,9 @@ component {
 		// SES Routes
 		routes = [
 			// Module Entry Point
-			{pattern="/", handler="test",action="index"},
+			{ pattern="/", handler="test",action="index" },
 			// Convention Route
-			{pattern="/:handler/:action?"}
+			{ pattern="/:handler/:action?" }
 		];
 	}
 
@@ -68,9 +68,10 @@ component {
 	}
 
 	/**
-	* Trap exceptions and send them to BugLogHQ
+	* Trap exceptions and send them to BugLogHQ asynchronously
 	*/
-	function onException( event, interceptData, buffer ){
+	function onException( event, interceptData, buffer ) async{
+		//systemOUtput( "-----> about to send to buglog" );
 		wirebox.getInstance( "BugLogService@bugloghq" )
 			.notifyService(
 				message 		= interceptData.exception.message & "." & interceptData.exception.detail,
@@ -78,6 +79,7 @@ component {
 				extraInfo 		= getHTTPRequestData(),
 				severityCode 	= "error"
 			);
+		//systemOUtput( "-----> sent to buglog" );
 	}
 
 	//**************************************** PRIVATE ************************************************//	

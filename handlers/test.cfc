@@ -11,6 +11,13 @@ component extends="coldbox.system.EventHandler"{
 	}
 
 	/**
+	* test
+	*/
+	any function test( event, rc, prc ){
+		return "Test ran";
+	}
+
+	/**
 	* Index
 	*/
 	any function index( event, rc, prc ){
