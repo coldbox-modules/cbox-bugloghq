@@ -20,6 +20,6 @@
         "apidocs/*",
         "handlers/*"
     ],
-    "postVersion":"package set location='gitUser/gitRepo#v`package version`'",
+    "postVersion":"package set location='coldbox-modules/cbox-bugloghq#v`package version`'",
     "postPublish":"!git push --follow-tags"
 }
