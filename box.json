@@ -2,7 +2,7 @@
     "name":"BugLogHQ",
     "author":"Ortus Solutions <info@ortussolutions.com>",
     "location":"coldbox-modules/cbox-bugloghq#v2.0.0",
-    "version":"minor",
+    "version":"2.1.0",
     "slug":"bugloghq",
     "type":"modules",
     "repository":{
