@@ -37,7 +37,7 @@ component extends="coldbox.system.logging.AbstractAppender"{
 			entry = arguments.logEvent.getCategory() & ":" & arguments.logEvent.getMessage();
 		}
 
-		if( instance.util.inThread() ) {
+		if( getUtil().inThread() ) {
 			// log it
 			variables.buglogHQService.notifyService(
 				message 		= entry,
