@@ -46,6 +46,7 @@ component extends="coldbox.system.logging.AbstractAppender"{
 				severityCode 	= this.logLevels.lookup( arguments.logEvent.getSeverity() )
 			);
 		} else {
+			var threadName="buglog_#createUUID()#";
 			// Thread this puppy
 			thread 	action="run" 
 					name="#threadName#" 
