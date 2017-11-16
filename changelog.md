@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+## 2.1.1
+* Fixed an error by the appender when `instance.util` was not defined in the `AbstractAppender`
+
 ## 2.1.0
 * Added asynchronous capablities to logging for performance
 
